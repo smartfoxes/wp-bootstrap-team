@@ -62,6 +62,7 @@ function wp_bootstrap_team_member_options_metabox_html($post) {
     $title = get_post_meta( $post->ID, '_wp_bootstrap_team_title', true );      
     $phone = get_post_meta( $post->ID, '_wp_bootstrap_team_phone', true );      
     $email = get_post_meta( $post->ID, '_wp_bootstrap_team_email', true );      
+    $linkedin = get_post_meta( $post->ID, '_wp_bootstrap_team_linkedin', true );  
     ?>
     <p>
     <label for="wp_bootstrap_team_title">Title</label>
@@ -74,6 +75,10 @@ function wp_bootstrap_team_member_options_metabox_html($post) {
     <p>
     <label for="wp_bootstrap_team_title">Email</label>
     <input class="widefat" type="text" id="wp_bootstrap_team_email" name="wp_bootstrap_team_email" value="<?php echo esc_attr( $email ); ?>" />
+    </p>
+    <p>
+    <label for="wp_bootstrap_team_linkedin">Linked in</label>
+    <input class="widefat" type="text" id="wp_bootstrap_team_linkedin" name="wp_bootstrap_team_linkedin" value="<?php echo esc_attr( $linkedin ); ?>" />
     </p>
     <?php		
 }
@@ -108,6 +113,8 @@ function wp_bootstrap_team_save_postdata( $post_id ) {
     update_post_meta( $post_id, '_wp_bootstrap_team_title', $title );    
     $phone = sanitize_text_field( $_POST['wp_bootstrap_team_phone'] );
     update_post_meta( $post_id, '_wp_bootstrap_team_phone', $phone );    
+    $linkedin = sanitize_text_field( $_POST['wp_bootstrap_team_linkedin'] );
+    update_post_meta( $post_id, '_wp_bootstrap_team_linkedin', $linkedin );    
     $email = sanitize_text_field( $_POST['wp_bootstrap_team_email'] );
     update_post_meta( $post_id, '_wp_bootstrap_team_email', $email );    
 }
