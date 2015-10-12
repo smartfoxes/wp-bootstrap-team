@@ -14,7 +14,6 @@ require_once dirname( __FILE__ ) . '/include/shortcodes.php';
 
 add_image_size( 'team-member-photo', 300, 300, false );
 
-/*if ( is_admin() ):
+if ( is_admin() ):
 	require_once dirname( __FILE__ ) . '/admin.php';
 endif;
-*/

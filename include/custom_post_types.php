@@ -62,6 +62,9 @@ function wp_bootstrap_team_member_options_metabox_html($post) {
     $title = get_post_meta( $post->ID, '_wp_bootstrap_team_title', true );      
     $phone = get_post_meta( $post->ID, '_wp_bootstrap_team_phone', true );      
     $email = get_post_meta( $post->ID, '_wp_bootstrap_team_email', true );      
+    $video = get_post_meta( $post->ID, '_wp_bootstrap_team_video', true );      
+    $thumb = get_post_meta( $post->ID, '_wp_bootstrap_team_thumb', true );      
+    $thumbHover = get_post_meta( $post->ID, '_wp_bootstrap_team_thumbHover', true );      
     $linkedin = get_post_meta( $post->ID, '_wp_bootstrap_team_linkedin', true );  
     ?>
     <p>
@@ -77,8 +80,22 @@ function wp_bootstrap_team_member_options_metabox_html($post) {
     <input class="widefat" type="text" id="wp_bootstrap_team_email" name="wp_bootstrap_team_email" value="<?php echo esc_attr( $email ); ?>" />
     </p>
     <p>
+    <label for="wp_bootstrap_team_title">Video</label>
+    <input class="widefat" type="text" id="wp_bootstrap_team_video" name="wp_bootstrap_team_video" value="<?php echo esc_attr( $video ); ?>" />
+    </p>
+    <p>
     <label for="wp_bootstrap_team_linkedin">Linked in</label>
     <input class="widefat" type="text" id="wp_bootstrap_team_linkedin" name="wp_bootstrap_team_linkedin" value="<?php echo esc_attr( $linkedin ); ?>" />
+    </p>
+    <p>
+    <label for="wp_bootstrap_team_title">Thumbnail Image (used in navigation)</label>
+    <input class="widefat wp_bootstrap_team_image" type="text" id="wp_bootstrap_team_thumb" name="wp_bootstrap_team_thumb" value="<?php echo esc_attr( $thumb ); ?>" />
+    <input type="button" id="wp_bootstrap_team_thumb-button" class="button wp_bootstrap_team_button" value="Choose or Upload an Image" />
+    </p>
+    <p>
+    <label for="wp_bootstrap_team_title">Thumbnail Image Hover (used in navigation)</label>
+    <input class="widefat wp_bootstrap_team_image" type="text" id="wp_bootstrap_team_thumbHover" name="wp_bootstrap_team_thumbHover" value="<?php echo esc_attr( $thumbHover ); ?>" />
+    <input type="button" id="wp_bootstrap_team_thumbHover-button" class="button wp_bootstrap_team_button" value="Choose or Upload an Image" />
     </p>
     <?php		
 }
@@ -117,5 +134,11 @@ function wp_bootstrap_team_save_postdata( $post_id ) {
     update_post_meta( $post_id, '_wp_bootstrap_team_linkedin', $linkedin );    
     $email = sanitize_text_field( $_POST['wp_bootstrap_team_email'] );
     update_post_meta( $post_id, '_wp_bootstrap_team_email', $email );    
+    $video = sanitize_text_field( $_POST['wp_bootstrap_team_video'] );
+    update_post_meta( $post_id, '_wp_bootstrap_team_video', $video );    
+    $thumb = sanitize_text_field( $_POST['wp_bootstrap_team_thumb'] );
+    update_post_meta( $post_id, '_wp_bootstrap_team_thumb', $thumb );    
+    $thumbHover = sanitize_text_field( $_POST['wp_bootstrap_team_thumbHover'] );
+    update_post_meta( $post_id, '_wp_bootstrap_team_thumbHover', $thumbHover );    
 }
 add_action( 'save_post', 'wp_bootstrap_team_save_postdata' );
